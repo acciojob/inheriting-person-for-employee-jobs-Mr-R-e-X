@@ -22,11 +22,6 @@ Employee.prototype.jobGreet = function() {
   return `Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`; // Changed to return
 };
 
-// Export the constructors for Cypress tests
-module.exports = {
-  Person,
-  Employee
-};
 
 // Example usage
 const person = new Person("Alice", 25);
