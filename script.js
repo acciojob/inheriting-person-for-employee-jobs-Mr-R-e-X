@@ -1,26 +1,26 @@
-// Person Class
-class Person {
-  constructor(name, age) {
-    this.name = name;
-    this.age = age;
-  }
-
-  greet() {
-    console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
-  }
+// Person Constructor Function
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
 }
 
-// Employee Class
-class Employee extends Person {
-  constructor(name, age, jobTitle) {
-    super(name, age); // Call the parent class constructor
-    this.jobTitle = jobTitle;
-  }
+Person.prototype.greet = function() {
+  console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
+};
 
-  jobGreet() {
-    console.log(`Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`);
-  }
+// Employee Constructor Function
+function Employee(name, age, jobTitle) {
+  Person.call(this, name, age); // Call the Person constructor with this context
+  this.jobTitle = jobTitle;
 }
+
+// Inherit from Person
+Employee.prototype = Object.create(Person.prototype);
+Employee.prototype.constructor = Employee;
+
+Employee.prototype.jobGreet = function() {
+  console.log(`Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`);
+};
 
 // Example Test Case
 
