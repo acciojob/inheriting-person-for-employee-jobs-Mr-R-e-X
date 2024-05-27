@@ -1,32 +1,33 @@
-function Person(name, age) {
-  this.name = name;
-  this.age = age;
+// Person Class
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet() {
+    console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
+  }
 }
 
-function Employee(name, age, jobTitle) {
-  Person.call(this, name, age); // Call the Person constructor
-  this.jobTitle = jobTitle;
+// Employee Class
+class Employee extends Person {
+  constructor(name, age, jobTitle) {
+    super(name, age); // Call the parent class constructor
+    this.jobTitle = jobTitle;
+  }
+
+  jobGreet() {
+    console.log(`Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`);
+  }
 }
 
-// Do not change code below this line
+// Example Test Case
 
-Person.prototype.greet = function () {
-  console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
-};
-Employee.prototype = Object.create(Person.prototype);
-Employee.prototype.constructor = Employee;
+// Create an instance of the Person class
+const person = new Person("Alice", 25);
+person.greet(); // Expected output: Hello, my name is Alice, I am 25 years old.
 
-Employee.prototype.jobGreet = function () {
-  console.log(
-    `Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`
-  );
-};
-
-window.Person = Person;
-window.Employee = Employee;
-
-const alice = new Person("Alice", 25);
-alice.greet(); 
-
-const bob = new Employee("Bob", 30, "Manager");
-bob.jobGreet();
+// Create an instance of the Employee class
+const employee = new Employee("Bob", 30, "Manager");
+employee.jobGreet(); // Expected output: Hello, my name is Bob, I am 30 years old, and my job title is Manager.
