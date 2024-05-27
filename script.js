@@ -24,6 +24,4 @@ Employee.prototype.jobGreet = function() {
   console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
 };
 
-// Expose constructors to the window object for Cypress
-window.Person = Person;
-window.Employee = Employee;
+
